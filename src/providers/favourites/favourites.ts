@@ -34,7 +34,7 @@ export class FavouritesProvider {
         }
 
         // Create Record instance
-        this.record = new Record((type !== 'audiobook') ? item.trackName : item.collectionName, item.artistName, item.artworkUrl100, type, item.collectionViewUrl);
+        this.record = new Record((type !== 'audiobook') ? item.trackName : item.collectionName, item.artistName, item.artworkUrl100, type, item.collectionViewUrl, this.itemID);
 
         // Save Record to storage
         this.storage.set(this.itemID, this.record);
@@ -53,9 +53,6 @@ export class FavouritesProvider {
 
   // Delete item from memory
   deleteRecord(id: string) {
-    this.storage.keys()
-      .then((values) => {
-        this.storage.remove(values[id]);
-      });
+    this.storage.remove(id);
   }
 }

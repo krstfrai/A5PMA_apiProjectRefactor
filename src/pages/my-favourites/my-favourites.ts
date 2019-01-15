@@ -36,6 +36,7 @@ export class MyFavouritesPage {
   deleteFromFavourite(event) {
     this.itemID = event.target.id || event.target.parentNode.id;
     this.favouritesProvider.deleteRecord(this.itemID);
+    console.log(event.target.closest("ion-item"));
   }
 
 }
