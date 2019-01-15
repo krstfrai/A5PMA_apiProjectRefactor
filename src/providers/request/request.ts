@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Jsonp } from '@angular/http'
+import { Observable } from 'rxjs/Rx';
 
 /*
   Generated class for the RequestProvider provider.
@@ -10,8 +11,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RequestProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(private jsonp: Jsonp) {
     console.log('Hello RequestProvider Provider');
   }
 
+  sendRequest(url: string):Observable<any> {
+    return this.jsonp.request(url);
+  }
 }

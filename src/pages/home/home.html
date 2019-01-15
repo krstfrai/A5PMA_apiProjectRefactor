@@ -9,12 +9,12 @@
 
     <ion-item>
       <ion-label color="primary" floating>Search Term</ion-label>
-      <ion-input [(ngModel)]="this.searchTerm"></ion-input>
+      <ion-input [(ngModel)]="searchTerm"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Media Type</ion-label>
-      <ion-select [(ngModel)]="this.mediaType" interface="action-sheet">
+      <ion-select [(ngModel)]="mediaType" interface="action-sheet">
         <ion-option value="music">Music</ion-option>
         <ion-option value="audiobook">Audioboook</ion-option>
         <ion-option value="movie">Movie</ion-option>
@@ -22,8 +22,28 @@
     </ion-item>
 
     <ion-item>
-        <button ion-button block (click)="this.sendData()">Send Request</button>
+      <button ion-button block (click)="this.retrieveData(this.searchTerm, this.mediaType)">Send Request</button>
     </ion-item>
 
   </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-card *ngFor="let item of this.searchResult; index as i">
+        <img src="{{ item.artworkUrl100 }}" />
+        <ion-card-content>
+          <ion-card-title>
+            {{ item.trackName }}
+          </ion-card-title>
+          <p>
+            {{ item.artistName }}
+          </p>
+          <button ion-button icon-only small>
+            <ion-icon name="heart" isActive="false"></ion-icon>
+          </button>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+
 </ion-content>

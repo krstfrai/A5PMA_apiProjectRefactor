@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Toast } from 'ionic-angular';
 
 import { ToastController } from 'ionic-angular';
+import { RequestProvider } from '../../providers/request/request'
 
 @Component({
   selector: 'page-home',
@@ -11,24 +12,28 @@ export class HomePage {
 
   private searchTerm: string = '';
   private mediaType: string = 'music';
+  private searchResult: Array<any>;
 
-  constructor(public navCtrl: NavController, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, private toastCtrl: ToastController, private requestProvider: RequestProvider) {
 
   }
 
   // 1. Get Input Data
-  sendData() {
+  retrieveData(search:string, type:string) {
     if(this.searchTerm !== '' && this.mediaType !== '') {
 
+      // 2. Send Request to API
+      this.requestProvider.sendRequest(`https://itunes.apple.com/search?term=${search}&media=${type}&callback=JSONP_CALLBACK`)
+      // 3. Get response and parse
+      .subscribe(data => {
+        let parsedData = data.json();
+        this.searchResult = parsedData.results;
+        console.log(this.searchResult);
+      });
     } else {
       this.presentToast();
     }
   }
-  // 2. Send Request to API
-
-  // 3. Get response and parse
-
-  // 4. Display Data
 
 
   // Toast Message

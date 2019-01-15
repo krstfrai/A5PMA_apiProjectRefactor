@@ -12,6 +12,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RequestProvider } from '../providers/request/request';
 
+import { JsonpModule } from '@angular/http';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +24,8 @@ import { RequestProvider } from '../providers/request/request';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
