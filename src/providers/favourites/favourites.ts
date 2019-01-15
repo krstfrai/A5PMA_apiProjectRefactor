@@ -37,8 +37,6 @@ export class FavouritesProvider {
   }
   
 
-  // Save to memory
-
   // Retrieve all items from memory
 
   // Delete item from memory
