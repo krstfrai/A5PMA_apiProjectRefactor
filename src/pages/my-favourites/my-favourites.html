@@ -15,6 +15,14 @@
 
 <ion-content padding>
 
+  <ion-item *ngIf="this.recordList.length">
+    <button ion-button block (click)="this.deleteAllItems()">Clear Storage</button>
+  </ion-item>
+
+  <ion-item text-center *ngIf="!this.recordList.length">
+      <h3 class="title">NO FAVOURITES</h3>
+  </ion-item>
+
   <ion-list>
     <ion-item *ngFor="let item of this.recordList; index as i">
       <ion-card>
@@ -24,7 +32,7 @@
             {{ item.name }}
           </ion-card-title>
           <p>
-            {{ item.author }}  | {{ item.type }}
+            {{ item.author }} | {{ item.type }}
           </p>
           <button ion-button icon-only small id="{{ item.id }}" (click)="deleteFromFavourite($event)">
             <ion-icon name="heart" isActive="true"></ion-icon>

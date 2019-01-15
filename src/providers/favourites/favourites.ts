@@ -55,4 +55,9 @@ export class FavouritesProvider {
   deleteRecord(id: string) {
     this.storage.remove(id);
   }
+
+  // Clear storage - delete all items
+  clearStorage() {
+    this.storage.clear();
+  }
 }

@@ -23,7 +23,7 @@ export class HomePage {
 
   }
 
-  // 1. Get Input Data
+  // Send API request
   retrieveData(search:string, type:string) {
     if(this.searchTerm !== '' && this.mediaType !== '') {
       this.searchTerm = '';
