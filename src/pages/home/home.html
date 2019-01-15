@@ -38,7 +38,7 @@
           <p>
             {{ item.artistName }}
           </p>
-          <button ion-button icon-only small>
+          <button ion-button icon-only small id="{{ i }}" (click)="addToFavourite($event)">
             <ion-icon name="heart" isActive="false"></ion-icon>
           </button>
         </ion-card-content>

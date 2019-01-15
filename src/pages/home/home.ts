@@ -35,6 +35,11 @@ export class HomePage {
     }
   }
 
+  addToFavourite(event) {
+    let itemID = event.target.id || event.target.parentNode.id;
+    console.log(this.searchResult[itemID].artistName);
+  }
+
 
   // Toast Message
   presentToast() {

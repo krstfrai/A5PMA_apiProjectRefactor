@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RequestProvider } from '../providers/request/request';
 
 import { JsonpModule } from '@angular/http';
+import { FavouritesProvider } from '../providers/favourites/favourites';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { JsonpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RequestProvider
+    RequestProvider,
+    FavouritesProvider
   ]
 })
 export class AppModule {}
