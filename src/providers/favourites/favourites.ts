@@ -24,17 +24,22 @@ export class FavouritesProvider {
   // Save record to device storage
   saveRecord(item: any, type: string) {
     // Generate ID
-    this.storage.length()
-      .then(lenght => {
-        this.itemID = lenght.toString();
-        
+    this.storage.keys()
+      .then(keys => {
+        if (keys.length === 0) {
+          this.itemID = '0';
+        } else {
+          let keysNum = keys.map(x => parseInt(x));
+          this.itemID = (Math.max(...keysNum) + 1).toString();
+        }
+
         // Create Record instance
         this.record = new Record((type !== 'audiobook') ? item.trackName : item.collectionName, item.artistName, item.artworkUrl100, type, item.collectionViewUrl);
 
         // Save Record to storage
         this.storage.set(this.itemID, this.record);
-      })
-        .then(() => console.log(this.storage.keys()));    
+      });
+
   }
 
   // Retrieve all items from memory
@@ -47,8 +52,8 @@ export class FavouritesProvider {
   }
 
   // Delete item from memory
-  deleteRecord(id:string) {
-     this.storage.keys()
+  deleteRecord(id: string) {
+    this.storage.keys()
       .then((values) => {
         this.storage.remove(values[id]);
       });

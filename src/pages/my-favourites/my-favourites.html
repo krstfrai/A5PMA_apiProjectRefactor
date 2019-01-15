@@ -24,7 +24,7 @@
             {{ item.name }}
           </ion-card-title>
           <p>
-            {{ item.author }}
+            {{ item.author }}  | {{ item.type }}
           </p>
           <button ion-button icon-only small id="{{ i }}" (click)="deleteFromFavourite($event)">
             <ion-icon name="heart" isActive="true"></ion-icon>
