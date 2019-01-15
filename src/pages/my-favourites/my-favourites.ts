@@ -34,9 +34,12 @@ export class MyFavouritesPage {
   }
 
   deleteFromFavourite(event) {
+    //get id of item we want to delete
     this.itemID = event.target.id || event.target.parentNode.id;
     this.favouritesProvider.deleteRecord(this.itemID);
-    console.log(event.target.closest("ion-item"));
+    
+    //Delete item from DOM
+    event.target.closest("ion-item").remove();
   }
 
 }

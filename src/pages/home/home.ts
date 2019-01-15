@@ -26,7 +26,7 @@ export class HomePage {
   // 1. Get Input Data
   retrieveData(search:string, type:string) {
     if(this.searchTerm !== '' && this.mediaType !== '') {
-
+      this.searchTerm = '';
       // 2. Send Request to API
       this.requestProvider.sendRequest(`https://itunes.apple.com/search?term=${search}&media=${type}&callback=JSONP_CALLBACK`)
       // 3. Get response and parse
@@ -42,7 +42,6 @@ export class HomePage {
 
   // Add Record to favourites
   addToFavourite(event, type:string) {
-    console.log('Yaaay!');
     let itemID = event.target.id || event.target.parentNode.id;
     this.favouritesProvider.saveRecord(this.searchResult[itemID], type);
   }
