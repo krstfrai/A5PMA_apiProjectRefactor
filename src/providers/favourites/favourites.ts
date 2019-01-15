@@ -47,5 +47,10 @@ export class FavouritesProvider {
   }
 
   // Delete item from memory
-
+  deleteRecord(id:string) {
+     this.storage.keys()
+      .then((values) => {
+        this.storage.remove(values[id]);
+      });
+  }
 }

@@ -19,6 +19,7 @@ import { FavouritesProvider } from '../../providers/favourites/favourites';
 export class MyFavouritesPage {
 
   private recordList: Array<Record> = [];
+  itemID: string;
 
   constructor(
               public navCtrl: NavController,
@@ -30,6 +31,11 @@ export class MyFavouritesPage {
     this.recordList = [];
     this.recordList = this.favouritesProvider.getStoredRecords();
     console.log(this.recordList);
+  }
+
+  deleteFromFavourite(event) {
+    this.itemID = event.target.id || event.target.parentNode.id;
+    this.favouritesProvider.deleteRecord(this.itemID);
   }
 
 }

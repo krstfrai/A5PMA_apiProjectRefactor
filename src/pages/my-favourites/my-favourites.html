@@ -16,8 +16,8 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item>
-      <ion-card *ngFor="let item of this.recordList; index as i">
+    <ion-item *ngFor="let item of this.recordList; index as i">
+      <ion-card>
         <img src="{{ item.image }}" />
         <ion-card-content>
           <ion-card-title>
@@ -26,8 +26,8 @@
           <p>
             {{ item.author }}
           </p>
-          <button ion-button icon-only small id="{{ i }}" (click)="addToFavourite($event, this.mediaType)">
-            <ion-icon name="heart" isActive="false"></ion-icon>
+          <button ion-button icon-only small id="{{ i }}" (click)="deleteFromFavourite($event)">
+            <ion-icon name="heart" isActive="true"></ion-icon>
           </button>
         </ion-card-content>
       </ion-card>
