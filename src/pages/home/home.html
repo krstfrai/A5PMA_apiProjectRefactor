@@ -9,7 +9,7 @@
 
     <ion-item>
       <ion-label color="primary" floating>Search Term</ion-label>
-      <ion-input [(ngModel)]="searchTerm"></ion-input>
+      <ion-input type="text" [(ngModel)]="searchTerm"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -28,8 +28,8 @@
   </ion-list>
 
   <ion-list>
-    <ion-item>
-      <ion-card *ngFor="let item of this.searchResult; index as i">
+    <ion-item *ngFor="let item of this.searchResult; index as i">
+      <ion-card>
         <img src="{{ item.artworkUrl100 }}" />
         <ion-card-content>
           <ion-card-title>

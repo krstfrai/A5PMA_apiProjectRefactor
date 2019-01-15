@@ -11,7 +11,7 @@ import { FavouritesProvider } from '../../providers/favourites/favourites';
 })
 export class HomePage {
 
-  private searchTerm: string = '';
+  private searchTerm: string;
   private mediaType: string = 'music';
   private searchResult: Array<any>;
 
