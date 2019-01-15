@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -10,8 +9,18 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FavouritesProvider {
 
-  constructor(public http: HttpClient) {
+  constructor() {
     console.log('Hello FavouritesProvider Provider');
   }
+
+  // Create class instance
+
+  // Generate ID
+
+  // Save to memory
+
+  // Retrieve all items from memory
+
+  // Delete item from memory
 
 }
