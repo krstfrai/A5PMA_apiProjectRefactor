@@ -8,6 +8,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { MyFavouritesPage } from '../pages/my-favourites/my-favourites';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,7 +23,8 @@ import { FavouritesProvider } from '../providers/favourites/favourites';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    MyFavouritesPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { FavouritesProvider } from '../providers/favourites/favourites';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    MyFavouritesPage
   ],
   providers: [
     StatusBar,

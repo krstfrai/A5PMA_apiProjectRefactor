@@ -41,7 +41,8 @@ export class HomePage {
   }
 
   // Add Record to favourites
-  addToFavourite(event, type) {
+  addToFavourite(event, type:string) {
+    console.log('Yaaay!');
     let itemID = event.target.id || event.target.parentNode.id;
     this.favouritesProvider.saveRecord(this.searchResult[itemID], type);
   }

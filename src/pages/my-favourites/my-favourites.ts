@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Record } from '../../models/record';
+import { FavouritesProvider } from '../../providers/favourites/favourites';
+
 /**
  * Generated class for the MyFavouritesPage page.
  *
@@ -15,11 +18,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyFavouritesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private recordList: Array<Record> = [];
+
+  constructor(
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              private favouritesProvider: FavouritesProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyFavouritesPage');
+  ionViewWillEnter() {
+    this.recordList = [];
+    this.recordList = this.favouritesProvider.getStoredRecords();
+    console.log(this.recordList);
   }
 
 }

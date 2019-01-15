@@ -14,6 +14,7 @@ export class FavouritesProvider {
 
   record: Record;
   recordList: Array<Record> = [];
+  itemID: string;
 
   constructor(private storage: Storage) {
     console.log('Hello FavouritesProvider Provider');
@@ -21,23 +22,29 @@ export class FavouritesProvider {
   }
 
   // Save record to device storage
-  saveRecord(item:any, type: string) {
+  saveRecord(item: any, type: string) {
     // Generate ID
-    let id = this.recordList.length.toString();
-    console.log(id);
+    this.storage.length()
+      .then(lenght => {
+        this.itemID = lenght.toString();
+        
+        // Create Record instance
+        this.record = new Record((type !== 'audiobook') ? item.trackName : item.collectionName, item.artistName, item.artworkUrl100, type, item.collectionViewUrl);
 
-    // Create Record instance
-    this.record = new Record((type !== 'audiobook') ? item.trackName : item.collectionName, item.artistName, item.artworkUrl100, type, item.collectionViewUrl);
-    this.recordList.push(this.record);
-    console.log(this.record);
-
-    // Save Record to storage
-    this.storage.set(id, item)
-      .then(() => console.log(this.storage.keys()));
+        // Save Record to storage
+        this.storage.set(this.itemID, this.record);
+      })
+        .then(() => console.log(this.storage.keys()));    
   }
-  
 
   // Retrieve all items from memory
+  getStoredRecords(): Array<Record> {
+    this.recordList = [];
+    this.storage.forEach((element, index) => {
+      this.recordList.push(element);
+    })
+    return this.recordList;
+  }
 
   // Delete item from memory
 
