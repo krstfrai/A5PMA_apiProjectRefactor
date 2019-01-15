@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { Record } from '../../models/record';
+import { Storage } from '@ionic/storage';
+
 /*
   Generated class for the FavouritesProvider provider.
 
@@ -9,13 +12,30 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FavouritesProvider {
 
-  constructor() {
+  record: Record;
+  recordList: Array<Record> = [];
+
+  constructor(private storage: Storage) {
     console.log('Hello FavouritesProvider Provider');
+    this.storage.clear();
   }
 
-  // Create class instance
+  // Save record to device storage
+  saveRecord(item:any, type: string) {
+    // Generate ID
+    let id = this.recordList.length.toString();
+    console.log(id);
 
-  // Generate ID
+    // Create Record instance
+    this.record = new Record((type !== 'audiobook') ? item.trackName : item.collectionName, item.artistName, item.artworkUrl100, type, item.collectionViewUrl);
+    this.recordList.push(this.record);
+    console.log(this.record);
+
+    // Save Record to storage
+    this.storage.set(id, item)
+      .then(() => console.log(this.storage.keys()));
+  }
+  
 
   // Save to memory
 

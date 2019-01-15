@@ -3,6 +3,7 @@ import { NavController, Toast } from 'ionic-angular';
 
 import { ToastController } from 'ionic-angular';
 import { RequestProvider } from '../../providers/request/request'
+import { FavouritesProvider } from '../../providers/favourites/favourites';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,11 @@ export class HomePage {
   private mediaType: string = 'music';
   private searchResult: Array<any>;
 
-  constructor(public navCtrl: NavController, private toastCtrl: ToastController, private requestProvider: RequestProvider) {
+  constructor(public navCtrl: NavController,
+              private toastCtrl: ToastController,
+              private requestProvider: RequestProvider,
+              private favouritesProvider: FavouritesProvider
+              ) {
 
   }
 
@@ -35,9 +40,10 @@ export class HomePage {
     }
   }
 
-  addToFavourite(event) {
+  // Add Record to favourites
+  addToFavourite(event, type) {
     let itemID = event.target.id || event.target.parentNode.id;
-    console.log(this.searchResult[itemID].artistName);
+    this.favouritesProvider.saveRecord(this.searchResult[itemID], type);
   }
 
 
