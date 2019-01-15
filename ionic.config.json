@@ -1,5 +1,7 @@
 {
   "name": "apiProjectRefactored",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
